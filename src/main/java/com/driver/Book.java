@@ -5,8 +5,11 @@ public class Book {
      private String name;
      private String genre;
      private String author;
-     public Book(){
 
+     private int bookId = 1 ;
+
+     public Book(){
+          this.id = bookId ;
      }
 
      public Book(int id, String name, String genre, String author) {
@@ -14,6 +17,14 @@ public class Book {
           this.name = name;
           this.genre = genre;
           this.author = author;
+     }
+
+     public Book(String name, String genre, String author) {
+          this.name = name;
+          this.genre = genre;
+          this.author = author;
+          bookId++;
+          this.id = bookId;
      }
 
      public int getId() {

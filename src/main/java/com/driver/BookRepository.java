@@ -6,13 +6,14 @@ import org.springframework.stereotype.Repository;
 public class BookRepository {
 
     List < Book > bookList ;
+
     public BookRepository(){
         this.bookList = new ArrayList<>() ;
     }
 
     public Book save(Book book){
         bookList.add(book);
-        return book;
+        return book ;
     }
 
     public Book findBookById(int id){
