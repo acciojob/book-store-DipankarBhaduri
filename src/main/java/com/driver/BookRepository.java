@@ -1,41 +1,67 @@
 package com.driver;
 import java.util.*;
-
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class BookRepository {
 
+    List < Book > bookList ;
     public BookRepository(){
-        
+        this.bookList = new ArrayList<>() ;
     }
 
     public Book save(Book book){
-        return null;
+        bookList.add(book);
+        return book;
     }
 
     public Book findBookById(int id){
-
-        return null;
+        for ( int i = 0 ; i < bookList.size() ; i++ ){
+            Book book = bookList.get(i) ;
+            if ( book.getId() == id ){
+                return book ;
+            }
+        }
+        return null ;
     }
 
+
     public List<Book> findAll(){
-        return null;
+        return bookList ;
     }
 
     public void deleteBookById(int id){
-        return;
+        for ( int i = 0 ; i < bookList.size() ; i++ ){
+            Book book = bookList.get(i) ;
+            if ( book.getId() == id ){
+                bookList.remove(i) ;
+                break ;
+            }
+        }
     }
 
     public void deleteAll(){
-        return;
+        bookList.clear() ;
     }
 
     public List<Book> findBooksByAuthor(String author){
-        return null;
+        List < Book > aut = new ArrayList<>() ;
+        for ( int i = 0 ; i < bookList.size() ; i++ ){
+            if ( bookList.get(i).getAuthor().equals(author)){
+                aut.add(bookList.get(i));
+            }
+        }
+        return aut ;
     }
 
     public List<Book> findBooksByGenre(String genre){
-        return null;
+        List < Book > aut = new ArrayList<>() ;
+        for ( int i = 0 ; i < bookList.size() ; i++ ){
+            if ( bookList.get(i).getGenre().equals(genre)){
+                aut.add(bookList.get(i));
+            }
+        }
+        return aut ;
     }
+
 }
